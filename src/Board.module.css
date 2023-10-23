@@ -1,6 +1,10 @@
 .board{
     color: black;
+    margin-top: 20vh;
+    width: 50vw;
 }
 .board_row{
-    
+    display: flex;
+    justify-content: space-evenly;
+    align-items: center;
 }
