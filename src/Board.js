@@ -21,7 +21,7 @@ const Board = () => {
     for(let logic of winner){
         const [a, b, c] = logic;
         if(state[a] !== null && state[a] === state[b] && state[a] === state[c]){
-           return true;
+           return state[a];
         }
     }
     return false;
@@ -29,18 +29,44 @@ const Board = () => {
 
   const isWinner = checkWinner();
 
+
+  const checkFull = () => {
+    for(let count of state){
+        if(count === null){
+            console.log("draw");
+            return false;
+        }
+        return true;
+    }
+  };
+ 
+  const full = checkFull();
+
+
   const handleClick = (index) => {
+    if(state[index] !== null){
+        return;
+    }
     const copyState = [...state];
     copyState[index] = xTurn ? "X" : "O";
     setState(copyState);
     setxTurn(!xTurn);
   };
 
+  const playAgain = () => {
+    setState(Array(9).fill(null)); 
+    setxTurn(true);
+  }
+
+ 
 
   return (
     <div className={styles.board}>
-        {isWinner ? "Won " : (
+        {isWinner ? <>{isWinner} Won the Game
+        <button onClick={playAgain}>Press to play again</button>
+        </>  : (full ? <>Draw</> : (
         <>
+        <h3>{xTurn ? 'X' : 'O'} Turn</h3>
         <div className={styles.board_row}>
             <Square value={state[0]} onClick = {() => handleClick(0)}/>
             <Square value={state[1]} onClick = {() => handleClick(1)}/>
@@ -56,7 +82,8 @@ const Board = () => {
             <Square value={state[7]} onClick = {() => handleClick(7)}/>
             <Square value={state[8]} onClick = {() => handleClick(8)}/>
         </div>
-        </>)}
+        </>))
+    }
     </div>
   )
 }
