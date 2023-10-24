@@ -5,7 +5,8 @@ import styles from './Board.module.css';
 const Board = () => {
   const [state, setState] = useState(Array(9).fill(null));
   const [xTurn, setxTurn] = useState(true);
-  
+ 
+
   const checkWinner = () => {
      const winner = [
      [0, 1, 2],
@@ -29,19 +30,18 @@ const Board = () => {
 
   const isWinner = checkWinner();
 
-
   const checkFull = () => {
     for(let count of state){
+        console.log(count);
         if(count === null){
-            console.log("draw");
             return false;
         }
-        return true;
     }
+        return true;
+    
   };
  
   const full = checkFull();
-
 
   const handleClick = (index) => {
     if(state[index] !== null){
@@ -64,7 +64,7 @@ const Board = () => {
     <div className={styles.board}>
         {isWinner ? <>{isWinner} Won the Game
         <button onClick={playAgain}>Press to play again</button>
-        </>  : (full ? <>Draw</> : (
+        </>  : (full ? <>Draw  <button onClick={playAgain}>Press to play again</button></> : (
         <>
         <h3>{xTurn ? 'X' : 'O'} Turn</h3>
         <div className={styles.board_row}>
