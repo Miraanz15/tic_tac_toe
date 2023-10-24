@@ -4,10 +4,14 @@ import styles from './Board.module.css';
 
 const Board = () => {
   const [state, setState] = useState(Array(9).fill(null));
+  const [xTurn, setxTurn] = useState(true);
   
   const handleClick = (index) => {
-
-  }
+    const copyState = [...state];
+    copyState[index] = xTurn ? "X" : "O";
+    setState(copyState);
+    setxTurn(!xTurn);
+  };
 
 
   return (
