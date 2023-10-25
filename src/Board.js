@@ -5,7 +5,7 @@ import styles from './Board.module.css';
 const Board = () => {
   const [state, setState] = useState(Array(9).fill(null));
   const [xTurn, setxTurn] = useState(true);
- 
+
 
   const checkWinner = () => {
      const winner = [
@@ -30,9 +30,9 @@ const Board = () => {
 
   const isWinner = checkWinner();
 
+  /* To check if all squares have been filled and no one won*/
   const checkFull = () => {
     for(let count of state){
-        console.log(count);
         if(count === null){
             return false;
         }

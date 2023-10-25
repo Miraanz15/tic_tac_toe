@@ -1,7 +1,14 @@
 .board{
     color: black;
-    margin-top: 20vh;
+    margin-top: 5vh;
     width: 50vw;
+    border: 1px solid black;
+    padding-left: 30px;
+    padding-right: 30px;
+    border-radius: 10px;
+    box-shadow: 0 0 10px black;
+    height: 90vh;
+    color: rgb(255, 255, 255);
 }
 .board_row{
     display: flex;
