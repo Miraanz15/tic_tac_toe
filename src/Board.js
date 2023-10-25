@@ -58,15 +58,15 @@ const Board = () => {
     setxTurn(true);
   }
 
- 
+   
 
   return (
     <div className={styles.board}>
-        {isWinner ? <>{isWinner} Won the Game
-        <button onClick={playAgain}>Press to play again</button>
-        </>  : (full ? <>Draw  <button onClick={playAgain}>Press to play again</button></> : (
+        {isWinner ? <><div className={styles.displayHead}>{isWinner} Won the Game </div>
+        <button onClick={playAgain} className={styles.clickButton}>Press to play again</button>
+        </>  : (full ? <><div className={styles.displayHead}> Draw  </div><button onClick={playAgain} className={styles.clickButton}>Press to play again</button></> : (
         <>
-        <h3>{xTurn ? 'X' : 'O'} Turn</h3>
+        <h1 style={{color: 'rgb(47,44,42)'}}>{xTurn ? 'X' : 'O'} Turn</h1>
         <div className={styles.board_row}>
             <Square value={state[0]} onClick = {() => handleClick(0)}/>
             <Square value={state[1]} onClick = {() => handleClick(1)}/>
